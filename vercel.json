@@ -1,15 +1,25 @@
 {
-   "version": 2,
-   "builds": [
-     {
-       "src": "src/server.js",
-       "use": "@vercel/node"
-     }
-   ],
-   "routes": [
-     {
-       "src": "/(.*)",
-       "dest": "src/server.js"
-     }
-   ]
- }
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/*",
+      "dest": "/api/server.js"
+    },
+    {
+      "src": "/blog/:slug",
+      "dest": "/blog/post.js"
+    },
+    {
+      "src": "/blog",
+      "dest": "/blog/index.html"
+    }
+  ],
+  "env": {
+    "API_KEY": "@api-key"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+}
